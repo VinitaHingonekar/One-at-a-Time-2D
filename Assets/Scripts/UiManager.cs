@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
+    public void Play()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public void Pause()
     {
         Time.timeScale = 0f;
@@ -29,7 +39,7 @@ public class UiManager : MonoBehaviour
 
     public void NextLevel()
     {
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ButtonClick()

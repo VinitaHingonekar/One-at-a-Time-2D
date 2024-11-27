@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GateController : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class GateController : MonoBehaviour
 
     public BoxCollider2D collider;
     public Animator animator;
+
+    // Lamp
+    public SpriteRenderer lamp;
+    public Sprite lampOn;
+    public Sprite lampOff;
 
     void Start()
     {
@@ -31,6 +37,7 @@ public class GateController : MonoBehaviour
 
     public void OpenGate()
     {
+        lamp.sprite = lampOn;
         Debug.Log("Gate Opened for " + openDuration);
         isOpen = true;
         collider.enabled = false;
@@ -39,6 +46,7 @@ public class GateController : MonoBehaviour
 
     public void CloseGate()
     {
+        lamp.sprite = lampOff;
         Debug.Log("Gate Close after " + openDuration);
         isOpen = false;
         collider.enabled = true;
