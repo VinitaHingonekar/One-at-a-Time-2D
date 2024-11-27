@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     public DoorController door2;
 
     public GameObject levelCompletePanel;
+    public GameObject gamePanel;
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +34,6 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         levelCompletePanel.SetActive(true);
+        gamePanel.SetActive(false);
     }
 }

@@ -4,36 +4,50 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public float moveSpeed;
     public Rigidbody2D rb;
+    public BoxCollider2D collider;
     private Vector2 movement;
+
+    public Animator animator;
 
     public enum PlayerType
     {
         FAST,
-        SWIM,
         STRONG
     }
 
     public PlayerType playerType;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool isActive;
+    private bool canMove = true;
 
-    // Update is called once per frame
     void Update()
     {
-        HandleInput();
+        // HandleInput();
+        IsTouchingWater();
+        if(isActive)
+        {
+            HandleInput();
+        }
     }
 
     private void FixedUpdate() 
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        // rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if(canMove)
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            
+        }
     }
+
+    private void UpdateAnimationParameters(float moveX, float moveY)
+    {
+        animator.SetFloat("MoveX", moveX);
+        animator.SetFloat("MoveY", moveY);
+    }
+
 
     private void HandleInput()
     {
@@ -41,5 +55,33 @@ public class PlayerController : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(moveX, moveY).normalized;
+        UpdateAnimationParameters(moveX, moveY);
     }
+
+    private void IsTouchingWater()
+    {
+        Vector2 moveDirection = movement.normalized;
+        float rayDistance = 0.5f;
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, rayDistance, LayerMask.GetMask("Water"));
+
+        if (hit.collider != null)
+        {
+            canMove = false;
+            // Debug.Log("Water detected in movement direction");
+        }
+        else
+        {
+            canMove = true;
+        }
+    }
+
+    // private void OnTriggerStay2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("Lever"))
+    //     {
+            
+    //     }
+    // }
+
 }
