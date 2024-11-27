@@ -7,7 +7,7 @@ public class WallController : MonoBehaviour
     public BoxCollider2D collider;
     public Animator animator;
 
-        public bool platePressed1;
+    public bool platePressed1;
     public bool platePressed2;
     
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class WallController : MonoBehaviour
 
     public void Open()
     {
-        Debug.Log("Opened");
+        // Debug.Log("Opened");
         collider.enabled = false;
         animator.SetBool("isOpened", true);
     }
@@ -32,7 +32,7 @@ public class WallController : MonoBehaviour
     public void Close()
     {
         animator.SetBool("isOpened", false);
-        Debug.Log("Closeed");
+        // Debug.Log("Closeed");
         collider.enabled = true;
 
     }

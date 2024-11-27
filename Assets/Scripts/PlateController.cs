@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class PlateController : MonoBehaviour
 {
-    public WallController wall;
     public Animator animator;
-
-    // public bool isPlayerOnPlate;
 
     public enum PlateNumber {ONE, TWO}
     public PlateNumber plateNumber;
-    public WallController WallController;
-
-
+    public WallController wallController;
 
     // Start is called before the first frame update
     void Start()
@@ -33,14 +28,14 @@ public class PlateController : MonoBehaviour
         {
             animator.SetBool("isPressed", true);
             if(plateNumber == PlateNumber.ONE)
-                WallController.platePressed1 = true;
+                wallController.platePressed1 = true;
             else if(plateNumber == PlateNumber.TWO)
-                WallController.platePressed2 = true;
+                wallController.platePressed2 = true;
 
-            Debug.Log("1 " + WallController.platePressed1);
-            Debug.Log("2 " + WallController.platePressed2);
+            Debug.Log("1 " + wallController.platePressed1);
+            Debug.Log("2 " + wallController.platePressed2);
 
-            wall.Open();
+            wallController.Open();
         }
     }
 
@@ -50,16 +45,16 @@ public class PlateController : MonoBehaviour
         {
             animator.SetBool("isPressed", false);
             if(plateNumber == PlateNumber.ONE)
-                WallController.platePressed1 = false;
+                wallController.platePressed1 = false;
             else if(plateNumber == PlateNumber.TWO)   
-                WallController.platePressed2 = false;
+                wallController.platePressed2 = false;
 
-            Debug.Log("1 " + WallController.platePressed1);
-            Debug.Log("2 " + WallController.platePressed2);
+            // Debug.Log("1 " + wallController.platePressed1);
+            // Debug.Log("2 " + wallController.platePressed2);
             
-            if(!WallController.platePressed1 && !WallController.platePressed2)
+            if(!wallController.platePressed1 && !wallController.platePressed2)
             {
-                wall.Close();
+                wallController.Close();
             }
         }
     }

@@ -5,34 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
-    void Pause()
+    public void Pause()
     {
         Time.timeScale = 0f;
     }
 
-    void Resume()
+    public void Resume()
     {
         Time.timeScale = 1f;
     }
 
-    void MainMenu()
+    public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1f;
     }
 
-    void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }
 
-    void NextLevel()
+    public void NextLevel()
     {
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    void ButtonClick()
+    public void ButtonClick()
     {
         // SoundManager.instance.PlaySound("SoundClick");
     }
