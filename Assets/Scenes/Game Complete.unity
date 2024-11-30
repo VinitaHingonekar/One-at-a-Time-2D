@@ -1062,7 +1062,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1314878839}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: Play
+        m_MethodName: PlayAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

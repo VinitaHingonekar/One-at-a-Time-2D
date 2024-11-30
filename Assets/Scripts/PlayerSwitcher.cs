@@ -18,12 +18,10 @@ public class PlayerSwitcher : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             SwitchCharacter(0);
-            // UpdatePlayerCanvas();         
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             SwitchCharacter(1);
-            // UpdatePlayerCanvas();         
         }
     }
 
@@ -50,10 +48,4 @@ public class PlayerSwitcher : MonoBehaviour
             }
         }
     }
-
-    // private void UpdatePlayerCanvas()
-    // {
-
-    // }  
-
 }

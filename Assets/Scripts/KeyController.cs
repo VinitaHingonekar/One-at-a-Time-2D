@@ -14,7 +14,6 @@ public class KeyController : MonoBehaviour
         keysCollected = 0;
     }
 
-    // Update is called once per frame
     public void KeyCollected()
     {
         

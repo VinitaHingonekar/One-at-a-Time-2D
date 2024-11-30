@@ -12,19 +12,7 @@ public class GateController : MonoBehaviour
     public Animator animator;
 
     // Lamp
-    public SpriteRenderer lamp;
-    public Sprite lampOn;
-    public Sprite lampOff;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    public Animator lampAnimator;
 
     private IEnumerator GateCoroutine()
     {
@@ -37,7 +25,7 @@ public class GateController : MonoBehaviour
 
     public void OpenGate()
     {
-        lamp.sprite = lampOn;
+        lampAnimator.SetBool("LeverOn", true);
         Debug.Log("Gate Opened for " + openDuration);
         isOpen = true;
         collider.enabled = false;
@@ -46,7 +34,7 @@ public class GateController : MonoBehaviour
 
     public void CloseGate()
     {
-        lamp.sprite = lampOff;
+        lampAnimator.SetBool("LeverOn", false);
         Debug.Log("Gate Close after " + openDuration);
         isOpen = false;
         collider.enabled = true;

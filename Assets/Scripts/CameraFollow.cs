@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public PlayerSwitcher playerSwitcher;
-    public float smoothSpeed = 0.125f; // Adjust for smoothness
-    public Vector3 offset; // Optional offset for the camera position
+    // public float smoothSpeed = 0.125f;
+    public Vector3 offset; 
 
     private Transform currentTarget;
 
@@ -18,10 +18,9 @@ public class CameraFollow : MonoBehaviour
         if (currentTarget != null)
         {
             Vector3 desiredPosition = currentTarget.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            // Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
             // transform.position = desiredPosition;
 
-            // Ensure the camera stays above the characters in the Z-axis
             transform.position = new Vector3(desiredPosition.x, 0, -10f);
         }
     }

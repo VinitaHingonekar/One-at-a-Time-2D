@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,29 +12,33 @@ public class LevelManager : MonoBehaviour
     public GameObject levelCompletePanel;
     public GameObject gamePanel;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int levels = 3;
 
-    // Update is called once per frame
     void Update()
     {
         if(KeyController.keysCollected == 2)
         {
             if(door1.isPlayerAtDoor && door2.isPlayerAtDoor)
             {
-                Debug.Log("level completed");
-                StartCoroutine("LevelComplete");
+                if(SceneManager.GetActiveScene().buildIndex == levels)
+                    StartCoroutine("GameComplete");
+                else
+                    StartCoroutine("LevelComplete");
             }
         }
     }
 
     private IEnumerator LevelComplete()
     {
-        yield return new WaitForSeconds(1f);
+        // SoundManager.Instance.Play(Sounds.LevelFinish);
+        yield return new WaitForSeconds(0.2f);
         levelCompletePanel.SetActive(true);
         gamePanel.SetActive(false);
+    }
+
+    private IEnumerator GameComplete()
+    {
+        yield return new WaitForSeconds(0.2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
 
+    public Transform feetTransform;
+
     public enum PlayerType
     {
         FAST,
@@ -61,9 +63,11 @@ public class PlayerController : MonoBehaviour
     private void IsTouchingWater()
     {
         Vector2 moveDirection = movement.normalized;
-        float rayDistance = 0.5f;
+        float rayDistance = 0.8f;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, rayDistance, LayerMask.GetMask("Water"));
+        RaycastHit2D hit = Physics2D.Raycast(feetTransform.position, moveDirection, rayDistance, LayerMask.GetMask("Water"));
+        Debug.DrawRay(feetTransform.position, moveDirection * rayDistance, Color.red);
+
 
         if (hit.collider != null)
         {
@@ -75,13 +79,5 @@ public class PlayerController : MonoBehaviour
             canMove = true;
         }
     }
-
-    // private void OnTriggerStay2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Lever"))
-    //     {
-            
-    //     }
-    // }
 
 }

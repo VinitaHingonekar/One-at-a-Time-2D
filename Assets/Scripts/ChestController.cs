@@ -13,7 +13,7 @@ public class ChestController : MonoBehaviour
     {
         if(other.gameObject.GetComponent<PlayerController>() != null)
         {
-            Debug.Log("Chest Opened");
+            SoundManager.Instance.Play(Sounds.ChestOpen);
             animator.SetTrigger("ChestOpen");
             keyAnimator.SetTrigger("ChestOpen");
             keyController.KeyCollected();

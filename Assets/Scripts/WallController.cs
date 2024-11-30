@@ -10,21 +10,8 @@ public class WallController : MonoBehaviour
     public bool platePressed1;
     public bool platePressed2;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Open()
     {
-        // Debug.Log("Opened");
         collider.enabled = false;
         animator.SetBool("isOpened", true);
     }
@@ -32,7 +19,6 @@ public class WallController : MonoBehaviour
     public void Close()
     {
         animator.SetBool("isOpened", false);
-        // Debug.Log("Closeed");
         collider.enabled = true;
 
     }
